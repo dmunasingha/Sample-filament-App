@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphedByMany;
 
 class ProductType extends Model {
-    //
-    public function products() {
-        return $this->morphedByMany(Product::class, 'typeable', 'typeables', 'product_type_id', 'typeable_id');
+
+    public function products(): MorphedByMany {
+        return $this->morphedByMany(Product::class, 'assignable', 'type_assignments');
     }
-    public function categories() {
-        return $this->morphedByMany(ProductCategory::class, 'typeable', 'typeables', 'product_type_id', 'typeable_id');
+
+    public function categories(): MorphedByMany {
+        return $this->morphedByMany(ProductCategory::class, 'assignable', 'type_assignments');
     }
 }
