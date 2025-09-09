@@ -19,6 +19,8 @@ use Filament\Tables\Table;
 class ProductColorResource extends Resource {
     protected static ?string $model = ProductColor::class;
 
+    protected static ?string $navigationLabel = 'Colors';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::PaintBrush;
 
     public static function form(Schema $schema): Schema {
