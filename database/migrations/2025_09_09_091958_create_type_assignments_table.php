@@ -9,12 +9,11 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('typeables', function (Blueprint $table) {
+        Schema::create('type_assignments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_type_id')->constrained('product_types')->cascadeOnDelete();
-            $table->unsignedBigInteger('typeable_id');
-            $table->string('typeable_type');
-            $table->unique(['product_type_id', 'typeable_id', 'typeable_type']);
+            $table->foreignId('type_id')->constrained('product_types')->onDelete('cascade');
+            $table->morphs('assignable'); // Creates assignable_id (int) and assignable_type (varchar 255)
+            $table->string('my_bonus_field', 255)->nullable();
             $table->timestamps();
         });
     }
@@ -23,6 +22,6 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('typeables');
+        Schema::dropIfExists('type_assignments');
     }
 };

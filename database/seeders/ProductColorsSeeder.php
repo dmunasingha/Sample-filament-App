@@ -57,7 +57,7 @@ class ProductColorsSeeder extends Seeder {
         ];
 
         foreach ($colors as $c) {
-            \App\Models\ProductColor::updateOrCreate(['hex' => $c['hex']], $c);
+            \App\Models\ProductColor::updateOrCreate(['hex_code' => $c['hex']], $c);
         }
     }
 }

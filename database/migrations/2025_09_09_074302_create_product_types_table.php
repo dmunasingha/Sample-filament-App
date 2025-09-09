@@ -11,8 +11,8 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('product_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('api_unique_number')->nullable(); // to be fetched via suffix action
+            $table->string('name', 255);
+            $table->string('api_unique_number', 100)->nullable(); // to be fetched via suffix action
             $table->timestamps();
         });
     }
