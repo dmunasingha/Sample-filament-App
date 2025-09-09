@@ -19,6 +19,8 @@ use Filament\Tables\Table;
 class ProductTypeResource extends Resource {
     protected static ?string $model = ProductType::class;
 
+    protected static ?string $navigationLabel = 'Types';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedTag;
 
     public static function form(Schema $schema): Schema {
