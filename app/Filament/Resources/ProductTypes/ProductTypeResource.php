@@ -44,9 +44,7 @@ class ProductTypeResource extends Resource {
     public static function getPages(): array {
         return [
             'index' => ListProductTypes::route('/'),
-            'create' => CreateProductType::route('/create'),
             'view' => ViewProductType::route('/{record}'),
-            'edit' => EditProductType::route('/{record}/edit'),
         ];
     }
 }

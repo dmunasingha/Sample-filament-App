@@ -9,10 +9,7 @@ return new class extends Migration {
      * Run the migrations.
      */
     public function up(): void {
-        Schema::create('category_product', function (Blueprint $table) {
-            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('product_category_id')->constrained()->cascadeOnDelete();
-            $table->primary(['product_id', 'product_category_id']);
+        Schema::table('products', function (Blueprint $table) {
             $table->timestamps();
         });
     }
@@ -21,6 +18,8 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
-        Schema::dropIfExists('category_product');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropTimestamps();
+        });
     }
 };

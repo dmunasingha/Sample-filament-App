@@ -9,15 +9,13 @@ use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class ProductColorsTable
-{
-    public static function configure(Table $table): Table
-    {
+class ProductColorsTable {
+    public static function configure(Table $table): Table {
         return $table
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('hex')
+                TextColumn::make('hex_code')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

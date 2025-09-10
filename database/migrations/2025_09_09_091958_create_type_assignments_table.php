@@ -11,9 +11,13 @@ return new class extends Migration {
     public function up(): void {
         Schema::create('type_assignments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('type_id')->constrained('product_types')->onDelete('cascade');
-            $table->morphs('assignable'); // Creates assignable_id (int) and assignable_type (varchar 255)
-            $table->string('my_bonus_field', 255)->nullable();
+            $table->foreignId('type_id')
+                ->constrained('product_types') // assuming your table is product_types
+                ->cascadeOnDelete();
+            $table->foreignId('assignment_id')
+                ->constrained('products') // assuming this links to products
+                ->cascadeOnDelete();
+            $table->string('my_bonus_field')->nullable();
             $table->timestamps();
         });
     }
